@@ -33,6 +33,11 @@ class _CurrentLocationButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () async {
         await controller.currentLocation();
+        await controller.zoomIn();
+        //await controller.zoomOut();
+        //await controller.setZoom(stepZoom: 7);
+        //await controller.setZoom(zoomLevel: 19);
+
       },
       child: Icon(Icons.my_location),
     );
@@ -54,6 +59,7 @@ class OsmMap extends StatelessWidget {
       initZoom: 12,
       minZoomLevel: 2,
       maxZoomLevel: 19,
+      stepZoom: 2,
     );
   }
 }
