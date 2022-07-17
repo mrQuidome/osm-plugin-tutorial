@@ -32,6 +32,9 @@ class _CurrentLocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
+        print('Hello Zoom');
+        double z = await controller.getZoom();
+        print(z);
         await controller.currentLocation();
         await controller.zoomIn();
         //await controller.zoomOut();

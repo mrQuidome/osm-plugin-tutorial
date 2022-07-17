@@ -221,7 +221,7 @@ class OsmMap extends StatelessWidget {
 
 ## Zoom
 
-Zoom is controlled with 4 initial values. These values influence the way the zoom functions on the controller are working. 
+Zoom is controlled with 4 initial values. These values influence the way the zoom functions on the controller are working. The zoom values are doubles. Level suggest an int 
 
 ```dart
 OSMFlutter(
