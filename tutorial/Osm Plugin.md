@@ -219,6 +219,35 @@ class OsmMap extends StatelessWidget {
 
 
 
+## Zoom
+
+Zoom is controlled with 4 initial values. These values influence the way the zoom functions on the controller are working. 
+
+```dart
+OSMFlutter(
+  controller: controller,
+  initZoom: 12,
+  minZoomLevel: 2,
+  maxZoomLevel: 19,
+  stepZoom: 2,
+);
+```
+
+There are several ways to adjust the zoom level
+
+```dart
+await controller.zoomIn();
+await controller.zoomOut();
+await controller.setZoom(stepZoom: 7);
+await controller.setZoom(zoomLevel: 19);
+```
+
+zoomIn() and zoomOut() use the current stepzoom for the delta. If stepZoom is negative, zoomIn() effectively becomes a zoomout.
+
+setZoom(stepZoom: 7) zooms in or out with the given step
+
+setZoom(zoomLevel: 19) zooms to the given level (not working)
+
 ## Questions
 
 Why is there a restriction on zoom level at low end and why is there a restriction on the zoom level on the high end?
