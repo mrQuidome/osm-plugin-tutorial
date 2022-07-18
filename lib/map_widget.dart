@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 
+
 class OsmWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _OsmWidgetState();
@@ -32,15 +33,7 @@ class _CurrentLocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
-        print('Hello Zoom');
-        double z = await controller.getZoom();
-        print(z);
         await controller.currentLocation();
-        await controller.zoomIn();
-        //await controller.zoomOut();
-        //await controller.setZoom(stepZoom: 7);
-        //await controller.setZoom(zoomLevel: 19);
-
       },
       child: Icon(Icons.my_location),
     );
@@ -63,6 +56,7 @@ class OsmMap extends StatelessWidget {
       minZoomLevel: 2,
       maxZoomLevel: 19,
       stepZoom: 2,
+      showContributorBadgeForOSM: true,
     );
   }
 }

@@ -242,11 +242,17 @@ await controller.setZoom(stepZoom: 7);
 await controller.setZoom(zoomLevel: 19);
 ```
 
-zoomIn() and zoomOut() use the current stepzoom for the delta. If stepZoom is negative, zoomIn() effectively becomes a zoomout.
+zoomIn() and zoomOut() use the current stepzoom for the delta. If stepZoom is negative, zoomIn() effectively becomes a zoomout and vice versa.
 
-setZoom(stepZoom: 7) zooms in or out with the given step
+setZoom(stepZoom: 2.3) zooms in or out with the given stepZoom value.
 
-setZoom(zoomLevel: 19) zooms to the given level (not working)
+setZoom(zoomLevel: 19.2) zooms to the given zoomLevel .
+
+It is also possible to get the current zoom level. This can be interesting because you can change the zoom level with a two finger gesture.
+
+```dart
+await controller.getZoom();
+```
 
 ## Questions
 
