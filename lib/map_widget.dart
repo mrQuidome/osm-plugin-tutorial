@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 
-
 class OsmWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _OsmWidgetState();
@@ -14,9 +13,18 @@ class _OsmWidgetState extends State<OsmWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: OsmMap(controller: controller),
-      floatingActionButton: _CurrentLocationButton(controller: controller),
+    return Stack(
+      children: [
+        Scaffold(
+          body: OsmMap(controller: controller),
+          floatingActionButton: _CurrentLocationButton(controller: controller),
+        ),
+        Positioned(
+          bottom: 0,
+          left: 5,
+          child: CopyrightOSMWidget(),
+        )
+      ],
     );
   }
 }
@@ -56,7 +64,6 @@ class OsmMap extends StatelessWidget {
       minZoomLevel: 2,
       maxZoomLevel: 19,
       stepZoom: 2,
-      showContributorBadgeForOSM: true,
     );
   }
 }

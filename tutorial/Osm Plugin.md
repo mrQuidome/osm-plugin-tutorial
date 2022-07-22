@@ -34,7 +34,7 @@ android {
 
 ### MultiDex
 
-When you run into a multidex issue add the following multidex entry
+When you run into a multidex issue add the following multidex entry in `android/app/build.gradle`
 
 ```
 android {
@@ -252,6 +252,45 @@ It is also possible to get the current zoom level. This can be interesting becau
 
 ```dart
 await controller.getZoom();
+```
+
+## OSM Badge
+
+You can get a default badge by using the following line in the `OSMFlutter` constructor.
+
+```dart
+showContributorBadgeForOSM: true
+```
+
+The badge will be shown in the bottom right of the screen
+
+<img src="C:\dev\android\osm_plugin_demo\tutorial\badge_01.png" alt="badge_01" style="zoom:20%;" />
+
+There is a badge widget, which you can use directly. For example placing the badge in the lower left can be accomplished by the following code. In this case you don't need `showContributorBadgeForOSM: true`
+
+```dart
+class _OsmWidgetState extends State<OsmWidget> {
+  MapController controller = MapController(
+      initMapWithUserPosition: false,
+      initPosition: GeoPoint(latitude: 40.7831095, longitude: -73.9773441));
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Scaffold(
+          body: OsmMap(controller: controller),
+          floatingActionButton: _CurrentLocationButton(controller: controller),
+        ),
+        Positioned(
+          bottom: 0,
+          right: 5,
+          child: CopyrightOSMWidget(),
+        )
+      ],
+    );
+  }
+}
 ```
 
 ## Questions
